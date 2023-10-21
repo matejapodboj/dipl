@@ -1,0 +1,26 @@
+<div th:fragment="header">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+      <img th:src="@{/logo.png}" alt="Logo" width="30" height="30">
+    </a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/home}" th:classappend="${#httpServletRequest.requestURI == '/home' ? 'active-link' : ''}">Home</a>
+        </li>
+        <li class="nav-item" th:classappend="${#httpServletRequest.requestURI == '/products' ? 'active-link' : ''}">
+          <a class="nav-link" th:href="@{/products}">Store</a>
+        </li>
+        <li class="nav-item" th:classappend="${#httpServletRequest.requestURI == '/about-us' ? 'active-link' : ''}">
+          <a class="nav-link" th:href="@{/about-us}">About-us</a>
+        </li>
+        <li class="nav-item" th:classappend="${#httpServletRequest.requestURI == '/contact' ? 'active-link' : ''}">
+          <a class="nav-link" th:href="@{/contact}">Contact</a>
+        </li>
+        <li class="nav-item" th:classappend="${#httpServletRequest.requestURI == '/faq' ? 'active-link' : ''}">
+          <a class="nav-link" th:href="@{/faq}">FAQ</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

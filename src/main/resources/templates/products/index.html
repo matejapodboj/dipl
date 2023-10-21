@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Price</th>
+        <!-- Add more columns as necessary -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.title}"></td>
+        <td th:text="${product.price}"></td>
+        <!-- Add more data cells as necessary -->
+    </tr>
+    </tbody>
+</table>
+
+<!-- Pagination controls -->
+<div>
+        <span th:unless="${currentPage == 0}">
+            <a th:href="@{/products?page=${currentPage - 1}}">Previous</a>
+        </span>
+    <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+            <a th:href="@{/products?page=${i}}" th:text="${i + 1}"></a>
+        </span>
+    <span th:unless="${currentPage == totalPages - 1}">
+            <a th:href="@{/products?page=${currentPage + 1}}">Next</a>
+        </span>
+</div>
+</body>
+</html>
