@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
@@ -16,10 +17,12 @@ public class Order {
 
     @NotBlank
     @Size(max = 50)
+    @Column(name = "first_name")
     private String firstName;
 
     @NotBlank
     @Size(max = 50)
+    @Column(name = "last_name")
     private String lastName;
 
     @NotBlank

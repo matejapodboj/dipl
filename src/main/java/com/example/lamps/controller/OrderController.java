@@ -17,7 +17,14 @@ public class OrderController {
     @PostMapping("/orders")
     public Order createOrder(@RequestBody OrderRequest orderRequest) {
         Order order = new Order();
+
         // Set order fields using orderRequest data
+        order.setFirstName(orderRequest.getFirstName());
+        order.setLastName(orderRequest.getLastName());
+        order.setEmail(orderRequest.getEmail());
+        order.setPhone(orderRequest.getPhone());
+        order.setAddress(orderRequest.getAddress());
+
         return orderService.createOrder(order, orderRequest.getProductIds());
     }
 }
