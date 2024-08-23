@@ -9,9 +9,8 @@ public class OrderRequest {
     private String email;
     private String phone;
     private String address;
+    private String city;
     private List<Long> productIds;
-
-    // Standard getters and setters
 
     public String getFirstName() {
         return firstName;
@@ -51,6 +50,14 @@ public class OrderRequest {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCity() {
+        return address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public List<Long> getProductIds() {

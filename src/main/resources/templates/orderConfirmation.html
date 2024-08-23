@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: black;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #333;
+            border: 5px solid orange;
+        }
+
+        h1 {
+            text-align: center;
+            color: orange;
+        }
+
+        h2 {
+            border-bottom: 2px solid orange;
+            padding-bottom: 10px;
+        }
+
+        .products {
+            margin-top: 20px;
+        }
+
+        .product-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: orange;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Hvala na porudžbini!</h1>
+    <h2>Detalji porudžbine:</h2>
+    <p><strong>Broj porudžbine:</strong> <span th:text="${order.id}"></span></p>
+
+    <div class="products">
+        <h2>Proizvodi:</h2>
+        <div th:each="product : ${order.getProducts()}">
+            <div class="product-item">
+                <p><strong>Ime proizvoda:</strong> <span th:text="${product.title}"></span></p>
+                <p><strong>Opis proizvoda:</strong> <span th:text="${product.shortDescription}"></span></p>
+                <p><strong>Cena:</strong> <span th:text="${product.price}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Detalji primaoca:</h2>
+    <p><strong>Primalac:</strong> <span th:text="${order.firstName + ' ' + order.lastName}"></span></p>
+    <p><strong>Adresa:</strong> <span th:text="${order.address + ', ' + order.city}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${order.email}"></span></p>
+    <p><strong>Phone:</strong> <span th:text="${order.phone}"></span></p>
+</div>
+</body>
+</html>

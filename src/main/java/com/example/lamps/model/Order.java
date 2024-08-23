@@ -38,13 +38,21 @@ public class Order {
     @Size(max = 255)
     private String address;
 
-    @ManyToMany
+    @NotBlank
+    @Size(max = 255)
+    private String city;
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "order_products",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
     private List<Product> products = new ArrayList<>();
+
+    public List<Product> getProducts() {
+        return products;
+    }
 
     public void setProducts(List<Product> products) {
         if (products != null) {
@@ -57,12 +65,13 @@ public class Order {
 
     public Order() {}
 
-    public Order(String firstName, String lastName, String email, String phone, String address) {
+    public Order(String firstName, String lastName, String email, String phone, String address, String city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.address = address;
+        this.city = city;
     }
 
     public Long getId() {
@@ -113,6 +122,10 @@ public class Order {
         this.address = address;
     }
 
+    public String getCity() { return address; }
+
+    public void setCity(String city) { this.city = city; }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -122,6 +135,7 @@ public class Order {
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
                 '}';
     }
 

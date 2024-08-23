@@ -24,6 +24,7 @@ public class OrderController {
         order.setEmail(orderRequest.getEmail());
         order.setPhone(orderRequest.getPhone());
         order.setAddress(orderRequest.getAddress());
+        order.setCity(orderRequest.getCity());
 
         return orderService.createOrder(order, orderRequest.getProductIds());
     }
